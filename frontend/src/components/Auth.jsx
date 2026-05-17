@@ -172,21 +172,10 @@ export function AuthPage() {
   }
 
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', background: 'var(--bg-color)' }}>
+    <div className="auth-container">
       {/* Left side branding with generated Techy Classroom image */}
-      <div style={{ 
-        flex: 1, 
-        backgroundImage: "linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 58, 138, 0.85)), url('https://image.pollinations.ai/prompt/clean%20techy%20futuristic%20classroom%20robot%20teacher%20hologram%20light%20theme%20dribbble?width=1080&height=1080&nologo=true')",
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        padding: '4rem', 
-        display: 'flex', 
-        flexDirection: 'column', 
-        justifyContent: 'center', 
-        color: 'white',
-        boxShadow: 'inset -10px 0 30px rgba(0,0,0,0.5)',
-        position: 'relative',
-        overflow: 'hidden'
+      <div className="auth-left" style={{ 
+        backgroundImage: "linear-gradient(rgba(15, 23, 42, 0.85), rgba(30, 58, 138, 0.85)), url('https://image.pollinations.ai/prompt/clean%20techy%20futuristic%20classroom%20robot%20teacher%20hologram%20light%20theme%20dribbble?width=1080&height=1080&nologo=true')"
       }}>
         
         {/* Floating AI Badge */}
@@ -229,7 +218,7 @@ export function AuthPage() {
       </div>
 
       {/* Right side form */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '2rem' }}>
+      <div className="auth-right">
         <form className="glass-panel animate-fade-in" style={{ padding: '3rem', width: '100%', maxWidth: '450px' }} onSubmit={handleAuth}>
           <h2 style={{ textAlign: 'center', marginBottom: '2rem', fontSize: '2rem' }}>
             {isLogin ? 'Welcome Back 👋' : 'Create Account ✨'}

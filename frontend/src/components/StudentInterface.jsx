@@ -246,7 +246,7 @@ export default function StudentInterface() {
   if (!hasJoined) {
     return (
       <div className="container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '90vh' }}>
-        <div className="grid-2 animate-fade-in" style={{ width: '100%', maxWidth: '1000px', alignItems: 'center', gap: '4rem' }}>
+        <div className="grid-2 animate-fade-in student-join-grid" style={{ width: '100%', maxWidth: '1000px', alignItems: 'center' }}>
           
           {/* Left Hero Side */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>

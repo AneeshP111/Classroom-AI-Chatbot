@@ -540,3 +540,253 @@ p  { color: var(--text-secondary); line-height: 1.6; }
   animation: shimmer 1.6s linear infinite;
   border-radius: 8px;
 }
+
+/* ─── Responsive & Mobile Optimization Overrides ─────── */
+@media (max-width: 768px) {
+  /* Core Layout overrides */
+  .container {
+    padding: 1rem 0.75rem !important;
+  }
+  
+  h1 { font-size: 1.85rem !important; }
+  h2 { font-size: 1.4rem !important; }
+  h3 { font-size: 1.2rem !important; }
+  
+  /* Chat Container optimization */
+  .chat-container {
+    height: 480px !important;
+    border-radius: 12px !important;
+  }
+  
+  .chat-messages {
+    padding: 0.75rem !important;
+    gap: 0.85rem !important;
+  }
+  
+  .message {
+    max-width: 92% !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.95rem !important;
+  }
+  
+  .chat-input-area {
+    padding: 0.75rem !important;
+    gap: 0.5rem !important;
+  }
+  
+  .chat-input-area .btn, .chat-input-area .btn-primary {
+    padding: 0.6rem !important;
+    border-radius: 6px !important;
+  }
+  
+  /* Flashcard scaling */
+  .flashcard-container {
+    height: 220px !important;
+    margin: 0.5rem auto !important;
+  }
+  
+  .flashcard-front, .flashcard-back {
+    padding: 1.25rem !important;
+  }
+  
+  .flashcard-front div, .flashcard-back div {
+    font-size: 1.1rem !important;
+  }
+  
+  /* Auth Screen layout */
+  .auth-container {
+    flex-direction: column !important;
+  }
+  
+  .auth-left {
+    display: none !important;
+  }
+  
+  .auth-right {
+    padding: 1rem !important;
+    width: 100% !important;
+  }
+  
+  .auth-right form {
+    padding: 2rem 1.5rem !important;
+  }
+  
+  /* Grid gap controls */
+  .grid-2 {
+    gap: 1.25rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Smaller mobile screen adjustments */
+  .chat-container {
+    height: 400px !important;
+  }
+  
+  .flashcard-container {
+    height: 200px !important;
+  }
+  
+  .flashcard-front div, .flashcard-back div {
+    font-size: 1rem !important;
+  }
+}
+
+/* ─── Student Join Screen Layout Grid ────────────────── */
+.student-join-grid {
+  gap: 4rem;
+}
+@media (max-width: 768px) {
+  .student-join-grid {
+    gap: 1.5rem !important;
+  }
+  
+  /* Hide the illustrative cap on small mobile screens to keep the join form above fold */
+  .student-join-grid img {
+    display: none !important;
+  }
+}
+
+/* ─── Landing Page CSS Refactoring ──────────────────── */
+.landing-nav-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .landing-nav-container {
+    padding: 0 1rem;
+  }
+  .landing-nav-container .nav-links-wrap {
+    display: none !important; /* Hide secondary links on mobile nav */
+  }
+}
+
+.landing-hero-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+.landing-hero-h1 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+.landing-hero-img {
+  width: 100%;
+  border-radius: 24px;
+  box-shadow: 0 24px 60px rgba(99,102,241,0.25);
+  border: 1px solid rgba(129,140,248,0.2);
+}
+@media (max-width: 768px) {
+  .landing-hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    padding: 0 1rem !important;
+    text-align: center;
+  }
+  .landing-hero-h1 {
+    font-size: 2.2rem !important;
+  }
+  .landing-hero-img {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+  .landing-hero-grid .hero-actions-wrap {
+    justify-content: center !important;
+  }
+}
+
+.landing-stats-bar {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+@media (max-width: 768px) {
+  .landing-stats-bar {
+    gap: 1.5rem !important;
+    padding: 2rem 1rem !important;
+  }
+}
+
+.landing-features-h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+@media (max-width: 768px) {
+  .landing-features-h2 {
+    font-size: 1.8rem !important;
+  }
+}
+
+.landing-features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+}
+@media (max-width: 480px) {
+  .landing-features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+}
+
+.landing-how-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+}
+@media (max-width: 480px) {
+  .landing-how-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+.landing-cta-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: rgba(15,22,41,0.75);
+  border: 1px solid rgba(129,140,248,0.2);
+  border-radius: 24px;
+  padding: 4rem 3rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.landing-cta-card h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+@media (max-width: 768px) {
+  .landing-cta-card {
+    padding: 2rem 1.5rem !important;
+    border-radius: 16px !important;
+  }
+  .landing-cta-card h2 {
+    font-size: 1.6rem !important;
+  }
+}
+
+
+

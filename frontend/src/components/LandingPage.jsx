@@ -12,34 +12,34 @@ export default function LandingPage() {
 
       {/* Navbar */}
       <nav style={{ position: 'fixed', top: 0, width: '100%', zIndex: 1000, background: 'rgba(6,9,24,0.8)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(129,140,248,0.2)', padding: '1rem 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <div className="landing-nav-container">
           <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.5rem', fontWeight: 700 }}>
             🎓 <span style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>ClassroomAI</span>
           </div>
-          <div style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
+          <div className="nav-links-wrap" style={{ display: 'flex', gap: '2.5rem', alignItems: 'center' }}>
             <a href="#features" style={{ color: '#94A3B8', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem' }}>Features</a>
             <a href="#how" style={{ color: '#94A3B8', textDecoration: 'none', fontWeight: 500, fontSize: '0.95rem' }}>How It Works</a>
-            <button onClick={() => navigate('/login')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 1.5rem', background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', color: 'white', border: 'none', borderRadius: '10px', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer', boxShadow: '0 4px 20px rgba(99,102,241,0.35)', transition: 'all 0.25s' }}>
-              Launch App →
-            </button>
           </div>
+          <button onClick={() => navigate('/login')} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', padding: '0.65rem 1.5rem', background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', color: 'white', border: 'none', borderRadius: '10px', fontWeight: 600, fontSize: '0.95rem', cursor: 'pointer', boxShadow: '0 4px 20px rgba(99,102,241,0.35)', transition: 'all 0.25s' }}>
+            Launch App →
+          </button>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', paddingTop: '5rem', position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'center' }}>
+        <div className="landing-hero-grid">
           <div>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'rgba(99,102,241,0.12)', color: '#818CF8', padding: '0.4rem 1rem', borderRadius: '999px', fontSize: '0.85rem', fontWeight: 600, border: '1px solid rgba(99,102,241,0.25)', marginBottom: '1.5rem', fontFamily: "'Space Grotesk', sans-serif" }}>
               ⚡ AI-Powered Education Platform
             </div>
-            <h1 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '3.8rem', fontWeight: 800, lineHeight: 1.1, marginBottom: '1.5rem', letterSpacing: '-0.03em' }}>
+            <h1 className="landing-hero-h1">
               The <span style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Smartest</span> Classroom You've Ever Been In
             </h1>
             <p style={{ color: '#94A3B8', fontSize: '1.2rem', maxWidth: '500px', marginBottom: '2.5rem', lineHeight: 1.6 }}>
               Real-time AI tutoring, instant flashcards, adaptive quizzes, and live analytics — all in one platform built for modern education.
             </p>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className="hero-actions-wrap" style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
               <button onClick={() => navigate('/login')} style={{ padding: '1rem 2.5rem', borderRadius: '12px', fontWeight: 700, fontSize: '1.1rem', background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', color: 'white', border: 'none', cursor: 'pointer', boxShadow: '0 6px 24px rgba(99,102,241,0.35)', transition: 'all 0.25s', display: 'inline-flex', alignItems: 'center', gap: '0.6rem' }}>
                 🚀 Open Classroom
               </button>
@@ -49,20 +49,20 @@ export default function LandingPage() {
             </div>
           </div>
           <div>
-            <img src="/landing_hero.png" alt="ClassroomAI" style={{ width: '100%', borderRadius: '24px', boxShadow: '0 24px 60px rgba(99,102,241,0.25)', border: '1px solid rgba(129,140,248,0.2)' }} />
+            <img src="/landing_hero.png" alt="ClassroomAI" className="landing-hero-img" />
           </div>
         </div>
       </section>
 
       {/* Stats */}
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '3rem 2rem', display: 'flex', justifyContent: 'center', gap: '4rem', flexWrap: 'wrap', position: 'relative', zIndex: 1 }}>
+      <div className="landing-stats-bar">
         {[
           { num: '100%', label: 'AI-Powered Answers' },
           { num: '3D', label: 'Interactive Flashcards' },
           { num: 'Live', label: 'Real-Time Analytics' },
           { num: '∞', label: 'Adaptive Difficulty' }
         ].map((s, i) => (
-          <div key={i} style={{ textAlign: 'center' }}>
+          <div key={i} style={{ textAlign: 'center', minWidth: '150px' }}>
             <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2.5rem', fontWeight: 700, background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{s.num}</div>
             <div style={{ color: '#94A3B8', fontSize: '0.9rem', marginTop: '0.25rem' }}>{s.label}</div>
           </div>
@@ -73,12 +73,12 @@ export default function LandingPage() {
       <section id="features" style={{ padding: '6rem 0', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2.8rem', fontWeight: 700, marginBottom: '1rem' }}>
+            <h2 className="landing-features-h2">
               Everything You Need to <span style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Learn & Teach</span>
             </h2>
             <p style={{ color: '#94A3B8', fontSize: '1.15rem', maxWidth: '600px', margin: '0 auto' }}>A suite of AI-powered tools designed to make every lecture engaging, interactive, and measurable.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem' }}>
+          <div className="landing-features-grid">
             {[
               { icon: '🤖', title: 'AI Chat Assistant', desc: 'Students ask questions and get instant, context-aware answers generated from the actual lecture PDFs uploaded by the teacher.' },
               { icon: '🧠', title: '3D Flashcards', desc: 'Generate interactive, flippable flashcards from any lecture in one click. Powered by AI to extract the most important concepts.' },
@@ -101,19 +101,19 @@ export default function LandingPage() {
       <section id="how" style={{ padding: '6rem 0', position: 'relative', zIndex: 1 }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2.8rem', fontWeight: 700, marginBottom: '1rem' }}>
+            <h2 className="landing-features-h2">
               How <span style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>ClassroomAI</span> Works
             </h2>
             <p style={{ color: '#94A3B8', fontSize: '1.15rem' }}>Get started in under 60 seconds. No complex setup required.</p>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2.5rem' }}>
+          <div className="landing-how-grid">
             {[
               { num: '1', title: 'Teacher Starts a Session', desc: 'The teacher logs in, sets a topic, uploads lecture materials, and starts a live session. Students get an email invite automatically.' },
               { num: '2', title: 'Students Join & Interact', desc: 'Students enter the session code and instantly have access to the AI tutor, flashcards, and quizzes — all based on the lecture content.' },
               { num: '3', title: 'Learn, Compete & Grow', desc: 'Students earn points, climb the leaderboard, and revise with flashcards. Teachers monitor engagement through live analytics.' }
             ].map((s, i) => (
               <div key={i} style={{ textAlign: 'center', padding: '2rem' }}>
-                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.5rem', fontWeight: 700, margin: '0 auto 1.5rem', boxShadow: '0 8px 24px rgba(99,102,241,0.35)' }}>{s.num}</div>
+                <div style={{ width: '64px', height: '64px', borderRadius: '50%', background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', color: 'white', display: 'flex', alignItems: 'center', justify_content: 'center', fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.5rem', fontWeight: 700, margin: '0 auto 1.5rem', boxShadow: '0 8px 24px rgba(99,102,241,0.35)' }}>{s.num}</div>
                 <h3 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '1.2rem', marginBottom: '0.5rem' }}>{s.title}</h3>
                 <p style={{ color: '#94A3B8', fontSize: '0.95rem', lineHeight: 1.6 }}>{s.desc}</p>
               </div>
@@ -124,9 +124,9 @@ export default function LandingPage() {
 
       {/* CTA */}
       <section style={{ padding: '6rem 2rem', position: 'relative', zIndex: 1 }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', background: 'rgba(15,22,41,0.75)', border: '1px solid rgba(129,140,248,0.2)', borderRadius: '24px', padding: '4rem 3rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+        <div className="landing-cta-card">
           <div style={{ position: 'absolute', top: '-100px', left: '50%', transform: 'translateX(-50%)', width: '400px', height: '400px', background: 'linear-gradient(135deg, #6366F1, #06B6D4)', filter: 'blur(120px)', opacity: 0.25, pointerEvents: 'none' }}></div>
-          <h2 style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: '2.5rem', marginBottom: '1rem', position: 'relative' }}>
+          <h2>
             Ready to Transform Your <span style={{ background: 'linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #06B6D4 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Classroom?</span>
           </h2>
           <p style={{ color: '#94A3B8', fontSize: '1.15rem', marginBottom: '2.5rem', position: 'relative' }}>Join the future of education. Start your first AI-powered session today.</p>
