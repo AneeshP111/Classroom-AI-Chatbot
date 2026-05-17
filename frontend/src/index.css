@@ -533,6 +533,33 @@ p  { color: var(--text-secondary); line-height: 1.6; }
   box-shadow: 0 16px 40px rgba(0,0,0,0.1);
 }
 
+/* ─── Auth Page Desktop Layout ────────────────────────── */
+.auth-container {
+  display: flex;
+  min-height: 100vh;
+  background: var(--bg-color);
+}
+.auth-left {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  padding: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  box-shadow: inset -10px 0 30px rgba(0,0,0,0.5);
+  position: relative;
+  overflow: hidden;
+}
+.auth-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
 /* ─── Shimmer Skeleton ───────────────────────────────── */
 .skeleton {
   background: linear-gradient(90deg, var(--border-color) 25%, var(--glass-bg) 50%, var(--border-color) 75%);
