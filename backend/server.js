@@ -200,11 +200,11 @@ app.post('/session/start', async (req, res) => {
     const allUsers = await db.getAllUsers();
     const students = allUsers.filter(u => u.role === 'student' && u.isVerified);
     for (const student of students) {
-      await sendEmail(
+      sendEmail(
         student.email, 
         'Class is starting soon!', 
         `The teacher just started a live session on "${currentSession.topic}". Join using the code: ${currentSession.sessionCode}`
-      );
+      ).catch(err => console.error("Session start notification email failed:", err));
     }
   } catch(e) {
     console.error("Failed to email students", e);

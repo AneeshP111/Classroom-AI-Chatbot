@@ -42,11 +42,19 @@ export default function TeacherDashboard() {
   }, []);
 
   const handleStartSession = async () => {
-    await fetch(`${SOCKET_SERVER_URL}/session/start`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ topic: topicInput || 'General Lecture', teacherName: user?.name || 'Teacher' })
-    });
+    try {
+      const res = await fetch(`${SOCKET_SERVER_URL}/session/start`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ topic: topicInput || 'General Lecture', teacherName: user?.name || 'Teacher' })
+      });
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to start session');
+      }
+    } catch (err) {
+      alert("Error starting session: " + err.message);
+    }
   };
 
   const handleInvite = async () => {
@@ -74,7 +82,15 @@ export default function TeacherDashboard() {
   };
 
   const handleStopSession = async () => {
-    await fetch(`${SOCKET_SERVER_URL}/session/stop`, { method: 'POST' });
+    try {
+      const res = await fetch(`${SOCKET_SERVER_URL}/session/stop`, { method: 'POST' });
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.error || 'Failed to stop session');
+      }
+    } catch (err) {
+      alert("Error stopping session: " + err.message);
+    }
   };
 
   const handleFileUpload = async (e) => {
