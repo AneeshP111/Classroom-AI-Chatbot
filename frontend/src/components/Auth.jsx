@@ -17,12 +17,15 @@ export function AuthPage() {
   const [showForgotPassword, setShowForgotPassword] = useState(false);
   const [forgotStep, setForgotStep] = useState(1);
   const [newPassword, setNewPassword] = useState('');
+  const [loading, setLoading] = useState(false);
   
   const { login } = useAuth();
   const navigate = useNavigate();
 
   const handleAuth = async (e) => {
     e.preventDefault();
+    setLoading(true);
+    document.body.style.cursor = 'wait';
     if (isLogin) {
       // Login
       try {
@@ -39,6 +42,9 @@ export function AuthPage() {
         navigate(data.role === 'teacher' ? '/teacher' : '/student');
       } catch (err) {
         alert(err.message);
+      } finally {
+        setLoading(false);
+        document.body.style.cursor = '';
       }
     } else {
       // Register
@@ -51,10 +57,13 @@ export function AuthPage() {
         const data = await res.json();
         if (!res.ok) throw new Error(data.error);
         
-        alert(data.message);
-        setShowVerify(true);
+        alert('Registration successful! You can now log in.');
+        setIsLogin(true);
       } catch (err) {
         alert(err.message);
+      } finally {
+        setLoading(false);
+        document.body.style.cursor = '';
       }
     }
   };
@@ -258,8 +267,18 @@ export function AuthPage() {
           </div>
         )}
 
-        <button className="btn btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '1rem' }} type="submit">
-          {isLogin ? 'Login' : 'Register'}
+        <button 
+          className="btn btn-primary" 
+          style={{ 
+            width: '100%', 
+            justifyContent: 'center', 
+            marginTop: '1rem',
+            cursor: loading ? 'wait' : 'pointer'
+          }} 
+          type="submit"
+          disabled={loading}
+        >
+          {loading ? (isLogin ? 'Logging in...' : 'Registering...') : (isLogin ? 'Login' : 'Register')}
         </button>
 
         {isLogin && (

@@ -91,15 +91,10 @@ app.post('/register', async (req, res) => {
     if (role === 'teacher' && teacherSecret !== process.env.TEACHER_SECRET) {
       return res.status(401).json({ error: 'Invalid Teacher Secret Code' });
     }
-
-    const verificationCode = Math.floor(1000 + Math.random() * 9000).toString(); // 4 digit code
     
     await db.registerUser(name, email, password, role);
-    pendingVerifications.set(email, verificationCode);
-
-    await sendEmail(email, 'Verify your Classroom Account', `Your verification code is: ${verificationCode}`);
     
-    res.json({ message: 'Registration successful. Please check your email for the verification code.' });
+    res.json({ message: 'Registration successful. You can now login!' });
   } catch (err) {
     console.error("Register Error:", err);
     res.status(500).json({ error: 'Server error during registration' });
@@ -107,19 +102,7 @@ app.post('/register', async (req, res) => {
 });
 
 app.post('/verify-email', async (req, res) => {
-  const { email, code } = req.body;
-  
-  if (pendingVerifications.get(email) !== code) {
-    return res.status(400).json({ error: 'Invalid verification code' });
-  }
-
-  try {
-    await db.verifyUser(email);
-    pendingVerifications.delete(email);
-    res.json({ message: 'Email verified successfully!' });
-  } catch(e) {
-    res.status(500).json({ error: 'Database error' });
-  }
+  res.json({ message: 'Email verified successfully!' });
 });
 
 app.post('/login', async (req, res) => {
@@ -128,7 +111,6 @@ app.post('/login', async (req, res) => {
   try {
     const user = await db.getUserByEmail(email);
     if (!user) return res.status(401).json({ error: 'Invalid email or password' });
-    if (!user.isVerified) return res.status(403).json({ error: 'Please verify your email first.' });
 
     const isMatch = await db.checkPassword(password, user.password);
     if (!isMatch) return res.status(401).json({ error: 'Invalid email or password' });

@@ -23,7 +23,7 @@ const registerUser = (name, email, password, role) => {
   return new Promise((resolve, reject) => {
     bcrypt.hash(password, 10, (err, hash) => {
       if (err) return reject(err);
-      db.run('INSERT INTO users (name, email, password, role, isVerified, points) VALUES (?, ?, ?, ?, 0, 0)', [name, email, hash, role], function(err) {
+      db.run('INSERT INTO users (name, email, password, role, isVerified, points) VALUES (?, ?, ?, ?, 1, 0)', [name, email, hash, role], function(err) {
         if (err) return reject(err);
         resolve(this.lastID);
       });
